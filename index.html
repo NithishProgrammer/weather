@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app - Nithish</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <center><h1 id="heading">Track the Weather of Your City</h1>
+    <p style="color: rgb(116, 115, 115); font-weight: bold;">This web always provide you the Accurate information From OpenWeatherMap</p></center>
+    <div class="box">
+
+        <div class="Weather" id="Weather">
+
+            <div class="srch">
+                <input type="text" placeholder="Search City" id="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgb(53, 136, 245);" onclick="search()"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z" ></path></svg>
+            </div>
+
+            <div class="results">
+
+<center>
+    <h3>City Name</h3>
+            <h1 id="cityname"></h1>
+            <h3>Temperature</h3>
+            <h2 id="temp"></h2>
+            <h3>Humidity</h3>
+            <h4 id="humid"></h4>
+            <h3>Wind Speed</h3>
+            <h4 id="wspeed"></h4>
+        </center>
+    
+    </div>
+   
+
+
+
+
+        </div>
+    </div>
+    
+    
+
+    <script>
+
+
+function search() {
+
+    
+    let Weatherbox = document.getElementById('Weather')
+        let cit = document.getElementById('cityname')
+        let temp = document.getElementById('temp');
+        let humid = document.getElementById('humid')
+        let wind = document.getElementById('wspeed');
+
+        
+
+        
+        const cityname = document.getElementById('Search');
+        const city = cityname.value;
+
+       fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=7ed8ecc72f93a603538dc55653bdf2f1").then((data)=>{
+        return data.json()
+       }).then((data)=>{
+
+        temp.innerText = data.main.temp-273.15 + "°C";
+        humid.innerText = data.main.humidity;
+        cit.innerText = data.name;
+        wind.innerText = data.wind.speed;
+
+       })
+
+       if (city == "") {
+
+        cit.innerText = "No valid City"
+
+
+        
+       }
+    
+}
+
+      
+
+    </script>
+
+<center>
+    
+    <div class="authenticated">
+        <br><br><br>
+    
+        <p style="color: rgb(105, 104, 104);">© Nithish S 2024</p>
+        <p class="partner" style="color: rgb(105, 104, 104);">Accuracy from <strong>OpenWeatherMap</strong></p>
+
+    </div>
+</center>
+</body>
+</html>
