@@ -66,9 +66,9 @@ function search() {
        }).then((data)=>{
 
         temp.innerText = data.main.temp-273.15 + "°C";
-        humid.innerText = data.main.humidity;
+        humid.innerText = data.main.humidity + "%";
         cit.innerText = data.name;
-        wind.innerText = data.wind.speed;
+        wind.innerText = data.wind.speed + "m/s";
 
        })
 
