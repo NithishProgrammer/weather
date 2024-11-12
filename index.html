@@ -6,6 +6,7 @@
     <title>Weather app - Nithish</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 <body>
     <center><h1 id="heading">Track the Weather of Your City</h1>
@@ -78,17 +79,22 @@ function search() {
         cit.innerText = data.name;
         wind.innerText = data.wind.speed + "m/s";
         city_link.href = "https://www.google.com/search?q=" + city
+        rain.innerText = data.weather[0].main + " ☁️☁️"
 
         calc = (data.main.temp-273.15) * 0.4 + data.main.humidity*0.5 + data.wind.speed*0.3 - 30;
         console.log(calc)
 
-        if (calc > 10){
+        if (data.weather[0].main == "Rain"){
 
-            rain.innerText = "It could Rain now 🌧️🌧️🌧️"
+            rain.innerText = data.weather[0].main + " 🌧️🌧️"
+            
         }
-        else{
-            rain.innerText = "Rain might not be Possible now!"
-        }
+
+        if (data.weather[0].main == "Clouds"){
+
+            rain.innerText = data.weather[0].main + " ☁️⛅"
+
+}
 
        })
 
