@@ -24,7 +24,7 @@ font-weight: 100;">This web always provide you the Accurate information From Ope
 
 <center>
     <h3 style="color: white;">City Name</h3>
-            <h1 id="cityname"></h1>
+           <a id="cit_l" href="" style="text-decoration: none;"><h1 id="cityname" style="text-decoration: underline; text-underline-offset: 6px;"></h1></a>
             <h3 style="color: white; font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
 font-weight: 600;">Temperature</h3>
             <h2 id="temp"></h2>
@@ -34,8 +34,8 @@ font-weight: 600;">Humidity</h3>
             <h3 style="color: white; font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
 font-weight: 600;">Wind Speed</h3>
             <h4 id="wspeed"></h4>
-            <h5 id="rain_predict" style="color: rgb(233, 233, 233); font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
-font-weight: 600;"></h5>
+            <h4 id="rain_predict" style="color: rgb(233, 233, 233); font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+font-weight: 600;"></h4>
         </center>
     
     </div>
@@ -61,6 +61,7 @@ function search() {
         let humid = document.getElementById('humid')
         let wind = document.getElementById('wspeed');
         let rain = document.getElementById('rain_predict')
+        let city_link = document.getElementById('cit_l')
 
         
 
@@ -76,6 +77,7 @@ function search() {
         humid.innerText = data.main.humidity + "%";
         cit.innerText = data.name;
         wind.innerText = data.wind.speed + "m/s";
+        city_link.href = "https://www.google.com/search?q=" + city
 
         calc = (data.main.temp-273.15) * 0.4 + data.main.humidity*0.5 + data.wind.speed*0.3 - 30;
         console.log(calc)
@@ -104,13 +106,14 @@ function search() {
 
     </script>
 
-<br><br>
+
 <center>
+    <br><br>
     
     <div class="authenticated">
-        <br><br><br><br><br>
+        <br><br><br><br><br><br><br>
     
-        <p style="color: rgb(105, 104, 104);">© Nithish S 2024</p>
+        <br><p style="color: rgb(105, 104, 104);">© Nithish S 2024</p>
         <p class="partner" style="color: rgb(105, 104, 104);">Accuracy from <strong>OpenWeatherMap</strong></p>
 
     </div>
